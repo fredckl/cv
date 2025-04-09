@@ -559,11 +559,21 @@
                     <div class="space-y-4">
                         <div class="flex items-center">
                             <i class="fas fa-envelope text-xl text-primary-600 dark:text-primary-400 w-8"></i>
-                            <a href="mailto:koller.f@gmail.com" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">koller.f@gmail.com</a>
+                            <span class="contact-info" data-type="email" data-value="koller.f@gmail.com">
+                                <button class="reveal-btn hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                                    <i class="fas fa-eye mr-2"></i>Afficher l'email
+                                </button>
+                                <a href="#" class="hidden contact-value hover:text-primary-600 dark:hover:text-primary-400 transition-colors"></a>
+                            </span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-phone text-xl text-primary-600 dark:text-primary-400 w-8"></i>
-                            <a href="tel:+41774702775" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">+41 77 470 27 75</a>
+                            <span class="contact-info" data-type="phone" data-value="+41 77 470 27 75">
+                                <button class="reveal-btn hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                                    <i class="fas fa-eye mr-2"></i>Afficher le numéro
+                                </button>
+                                <a href="#" class="hidden contact-value hover:text-primary-600 dark:hover:text-primary-400 transition-colors"></a>
+                            </span>
                         </div>
                         <div class="flex items-center">
                             <i class="fas fa-map-marker-alt text-xl text-primary-600 dark:text-primary-400 w-8"></i>
@@ -640,6 +650,58 @@
                         : '<i class="fas fa-minus-circle mr-2"></i>Voir moins d\'expériences';
                 });
             }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactInfos = document.querySelectorAll('.contact-info');
+
+            contactInfos.forEach((contactInfo) => {
+                const revealBtn = contactInfo.querySelector('.reveal-btn');
+                const contactValue = contactInfo.querySelector('.contact-value');
+                const dataType = contactInfo.getAttribute('data-type');
+                const dataValue = contactInfo.getAttribute('data-value');
+
+                if (revealBtn && contactValue) {
+                    // Préparer les liens avec les bonnes valeurs
+                    if (dataType === 'email') {
+                        contactValue.textContent = dataValue;
+                        contactValue.href = `mailto:${dataValue}`;
+                    } else if (dataType === 'phone') {
+                        contactValue.textContent = dataValue;
+                        contactValue.href = `tel:${dataValue.replace(/\s+/g, '')}`;
+                    }
+
+                    revealBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        contactValue.classList.toggle('hidden');
+                        revealBtn.classList.toggle('hidden');
+                    });
+
+                    // Permettre de recacher l'information si on clique dessus
+                    contactValue.addEventListener('click', (e) => {
+                        // Ne pas empêcher la navigation si c'est un vrai clic pour utiliser le lien
+                        if (e.ctrlKey || e.metaKey || e.shiftKey) {
+                            return;
+                        }
+                        
+                        // Copier dans le presse-papier
+                        navigator.clipboard.writeText(dataValue)
+                            .then(() => {
+                                // Afficher un message temporaire
+                                const originalText = contactValue.textContent;
+                                contactValue.textContent = 'Copié !';
+                                setTimeout(() => {
+                                    contactValue.textContent = originalText;
+                                }, 1500);
+                            })
+                            .catch(err => {
+                                console.error('Erreur lors de la copie : ', err);
+                            });
+                    });
+                }
+            });
         });
     </script>
 </body>
