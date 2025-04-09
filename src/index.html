@@ -21,9 +21,14 @@
     <meta name="twitter:description" content="Portfolio de Frédéric KOLLER, Développeur Web Full-Stack basé à Yverdon-les-Bains, Suisse. Expert en JavaScript, React, Node.js et technologies web modernes.">
     <meta name="twitter:image" content="https://me.frederickoller.ch/profile-image.jpg">
 
+    <!-- Polices standard -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Polices pixelisées (chargées mais non utilisées par défaut) -->
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script type="module" src="/main.js"></script>
     <style>
@@ -110,9 +115,107 @@
                 transform: rotate(360deg);
             }
         }
+
+        /* Styles pour les polices standard (par défaut) */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        h1, h2, h3, h4, h5, h6, .font-bold, .text-2xl, .btn {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .font-mono {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Styles pour les polices pixelisées (activées par l'easter egg) */
+        body.pixel-mode {
+            font-family: 'VT323', monospace;
+            font-size: 20px; /* Taille plus grande pour compenser la police pixelisée */
+        }
+
+        body.pixel-mode h1,
+        body.pixel-mode h2,
+        body.pixel-mode h3,
+        body.pixel-mode h4,
+        body.pixel-mode h5,
+        body.pixel-mode h6,
+        body.pixel-mode .font-bold,
+        body.pixel-mode .text-2xl,
+        body.pixel-mode .btn {
+            font-family: 'Press Start 2P', cursive;
+            line-height: 1.5;
+            letter-spacing: 0.5px;
+        }
+
+        /* Exclure les icônes Font Awesome des styles de police pixelisée */
+        body .fa,
+        body .fas,
+        body .fab,
+        body [class*="fa-"] {
+            font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
+        }
+
+        body.pixel-mode h1 {
+            font-size: 2rem;
+            line-height: 1.6;
+        }
+
+        body.pixel-mode h2 {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        body.pixel-mode h3 {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        body.pixel-mode .skill-badge,
+        body.pixel-mode .btn {
+            font-family: 'VT323', monospace;
+            font-size: 1.2rem;
+        }
+
+        body.pixel-mode .btn i {
+            font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
+        }
+
+        body.pixel-mode .font-mono {
+            font-family: 'VT323', monospace;
+        }
+
+        /* Notification d'easter egg */
+        .easter-egg-notification {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            z-index: 9999;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 12px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .easter-egg-notification.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="antialiased">
+    <!-- Notification d'easter egg -->
+    <div id="easter-egg-notification" class="easter-egg-notification">
+        MODE PIXEL ACTIVÉ !
+    </div>
+
     <!-- Animation de chargement -->
     <div class="loader-container" id="loader">
         <div class="loader">
@@ -808,6 +911,48 @@
                     loader.classList.add('loader-hidden');
                 });
             }
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const easterEggNotification = document.getElementById('easter-egg-notification');
+            let isPixelModeActive = false;
+
+            // Fonction pour activer le mode pixel
+            function activatePixelMode() {
+                document.body.classList.add('pixel-mode');
+                isPixelModeActive = true;
+                showNotification('MODE PIXEL ACTIVÉ !');
+            }
+
+            // Fonction pour désactiver le mode pixel
+            function deactivatePixelMode() {
+                document.body.classList.remove('pixel-mode');
+                isPixelModeActive = false;
+                showNotification('MODE STANDARD RESTAURÉ');
+            }
+
+            // Fonction pour afficher une notification
+            function showNotification(message) {
+                easterEggNotification.textContent = message;
+                easterEggNotification.classList.add('show');
+                setTimeout(() => {
+                    easterEggNotification.classList.remove('show');
+                }, 2000);
+            }
+
+            // Basculer le mode pixel avec la touche 'm'
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'm' || e.key === 'M') {
+                    // Basculer entre les modes
+                    if (isPixelModeActive) {
+                        deactivatePixelMode();
+                    } else {
+                        activatePixelMode();
+                    }
+                }
+            });
         });
     </script>
 </body>
