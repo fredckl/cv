@@ -34,6 +34,9 @@ module.exports = {
           900: '#4c1d95',
           950: '#2e1065',
         },
+        custom: {
+          dark: 'rgb(31, 41, 55)',
+        }
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],

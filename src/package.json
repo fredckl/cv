@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "alpinejs": "^3.12.2",
-    "aos": "^2.3.4"
+    "aos": "^2.3.4",
+    "emailjs-com": "^3.2.0"
   }
 }
