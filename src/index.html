@@ -1103,7 +1103,7 @@
             // Jeu Snake
             const canvas = document.getElementById('snake-game');
             const scoreDisplay = document.getElementById('snake-score');
-            let ctx, snake, food, score, direction, gameLoop;
+            let ctx, snake, food, score, direction, gameLoop, gameSpeed;
 
             function openSnakeGame() {
                 snakeModal.classList.add('show');
@@ -1120,27 +1120,28 @@
                 if (!ctx) {
                     ctx = canvas.getContext('2d');
                 }
-                
+
                 // Ajuster la taille du canvas à son conteneur
                 canvas.width = canvas.offsetWidth;
                 canvas.height = canvas.offsetHeight;
-                
+
                 const gridSize = 20;
                 const gridWidth = Math.floor(canvas.width / gridSize);
                 const gridHeight = Math.floor(canvas.height / gridSize);
-                
+
                 // Initialiser le serpent
                 snake = [
                     { x: Math.floor(gridWidth / 2), y: Math.floor(gridHeight / 2) }
                 ];
-                
+
                 // Générer la nourriture
                 food = generateFood(gridWidth, gridHeight);
-                
-                // Initialiser le score et la direction
+
+                // Initialiser le score, la direction et la vitesse
                 score = 0;
                 direction = 'right';
-                
+                gameSpeed = 100; // Vitesse initiale (ms)
+
                 // Mettre à jour l'affichage du score
                 scoreDisplay.textContent = `Score: ${score}`;
             }
@@ -1148,14 +1149,14 @@
             function generateFood(gridWidth, gridHeight) {
                 const x = Math.floor(Math.random() * gridWidth);
                 const y = Math.floor(Math.random() * gridHeight);
-                
+
                 // Vérifier que la nourriture n'est pas sur le serpent
                 for (let segment of snake) {
                     if (segment.x === x && segment.y === y) {
                         return generateFood(gridWidth, gridHeight);
                     }
                 }
-                
+
                 return { x, y };
             }
 
@@ -1163,16 +1164,21 @@
                 if (gameLoop) {
                     clearInterval(gameLoop);
                 }
-                
-                gameLoop = setInterval(() => {
-                    updateSnakeGame();
-                    drawSnakeGame();
-                }, 100); // Vitesse du jeu
+
+                updateGame(); // Démarrer immédiatement
+            }
+
+            function updateGame() {
+                updateSnakeGame();
+                drawSnakeGame();
+
+                // Programmer la prochaine mise à jour en fonction de la vitesse actuelle
+                gameLoop = setTimeout(updateGame, gameSpeed);
             }
 
             function stopSnakeGame() {
                 if (gameLoop) {
-                    clearInterval(gameLoop);
+                    clearTimeout(gameLoop);
                     gameLoop = null;
                 }
             }
@@ -1181,10 +1187,10 @@
                 const gridSize = 20;
                 const gridWidth = Math.floor(canvas.width / gridSize);
                 const gridHeight = Math.floor(canvas.height / gridSize);
-                
+
                 // Créer une nouvelle tête en fonction de la direction
                 const head = { ...snake[0] };
-                
+
                 switch (direction) {
                     case 'up':
                         head.y -= 1;
@@ -1199,13 +1205,13 @@
                         head.x += 1;
                         break;
                 }
-                
+
                 // Vérifier les collisions avec les bords
                 if (head.x < 0) head.x = gridWidth - 1;
                 if (head.x >= gridWidth) head.x = 0;
                 if (head.y < 0) head.y = gridHeight - 1;
                 if (head.y >= gridHeight) head.y = 0;
-                
+
                 // Vérifier les collisions avec le serpent lui-même
                 for (let i = 0; i < snake.length; i++) {
                     if (snake[i].x === head.x && snake[i].y === head.y) {
@@ -1215,16 +1221,20 @@
                         return;
                     }
                 }
-                
+
                 // Ajouter la nouvelle tête
                 snake.unshift(head);
-                
+
                 // Vérifier si le serpent a mangé la nourriture
                 if (head.x === food.x && head.y === food.y) {
                     // Augmenter le score
                     score += 10;
                     scoreDisplay.textContent = `Score: ${score}`;
-                    
+
+                    // Augmenter la vitesse du jeu
+                    // La vitesse minimale est de 40ms (très rapide)
+                    gameSpeed = Math.max(40, 100 - Math.floor(snake.length / 3) * 5);
+
                     // Générer une nouvelle nourriture
                     food = generateFood(gridWidth, gridHeight);
                 } else {
@@ -1235,21 +1245,21 @@
 
             function drawSnakeGame() {
                 const gridSize = 20;
-                
+
                 // Effacer le canvas
                 ctx.fillStyle = '#111';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
+
                 // Dessiner le serpent
                 ctx.fillStyle = '#4CAF50';
                 for (let segment of snake) {
                     ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 1, gridSize - 1);
                 }
-                
+
                 // Dessiner la tête du serpent dans une couleur différente
                 ctx.fillStyle = '#8BC34A';
                 ctx.fillRect(snake[0].x * gridSize, snake[0].y * gridSize, gridSize - 1, gridSize - 1);
-                
+
                 // Dessiner la nourriture
                 ctx.fillStyle = '#FF5722';
                 ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 1, gridSize - 1);
@@ -1258,7 +1268,7 @@
             // Contrôles du jeu Snake
             document.addEventListener('keydown', (e) => {
                 if (!snakeModal.classList.contains('show')) return;
-                
+
                 switch (e.key) {
                     case 'ArrowUp':
                         if (direction !== 'down') direction = 'up';
