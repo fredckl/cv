@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frédéric KOLLER - Développeur Web Full-Stack</title>
+    <meta name="description" content="Portfolio de Frédéric KOLLER, Développeur Web Full-Stack basé à Yverdon-les-Bains, Suisse">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="module" src="/main.js"></script>
+</head>
+<body class="antialiased">
+    <!-- Navigation -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm dark:bg-gray-900/90 dark:text-white">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary-600 dark:text-primary-400">FK<span class="text-secondary-600 dark:text-secondary-400">.</span></a>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#profil" class="hover:text-primary-600 transition-colors">Profil</a>
+                <a href="#experiences" class="hover:text-primary-600 transition-colors">Expériences</a>
+                <a href="#competences" class="hover:text-primary-600 transition-colors">Compétences</a>
+                <a href="#formations" class="hover:text-primary-600 transition-colors">Formations</a>
+                <a href="#contact" class="btn btn-primary">Contact</a>
+                
+                <!-- Dark Mode Toggle -->
+                <div class="flex items-center">
+                    <span class="mr-2 text-sm"><i class="fas fa-sun"></i></span>
+                    <label class="relative inline-block w-10 h-5">
+                        <input type="checkbox" id="dark-mode-toggle" class="opacity-0 w-0 h-0 peer">
+                        <span class="absolute cursor-pointer inset-0 bg-gray-300 rounded-full transition-all duration-300 before:absolute before:content-[''] before:h-4 before:w-4 before:left-0.5 before:bottom-0.5 before:bg-white before:rounded-full before:transition-all before:duration-300 peer-checked:bg-primary-600 peer-checked:before:translate-x-5"></span>
+                    </label>
+                    <span class="ml-2 text-sm"><i class="fas fa-moon"></i></span>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-gray-600 focus:outline-none dark:text-white">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white shadow-md dark:bg-gray-800 dark:text-white">
+            <div class="container mx-auto px-4 py-4 flex flex-col space-y-4">
+                <a href="#profil" class="hover:text-primary-600 transition-colors">Profil</a>
+                <a href="#experiences" class="hover:text-primary-600 transition-colors">Expériences</a>
+                <a href="#competences" class="hover:text-primary-600 transition-colors">Compétences</a>
+                <a href="#formations" class="hover:text-primary-600 transition-colors">Formations</a>
+                <a href="#contact" class="btn btn-primary text-center">Contact</a>
+                
+                <!-- Dark Mode Toggle (Mobile) -->
+                <div class="flex items-center justify-center">
+                    <span class="mr-2 text-sm"><i class="fas fa-sun"></i></span>
+                    <label class="relative inline-block w-10 h-5">
+                        <input type="checkbox" id="dark-mode-toggle-mobile" class="opacity-0 w-0 h-0 peer">
+                        <span class="absolute cursor-pointer inset-0 bg-gray-300 rounded-full transition-all duration-300 before:absolute before:content-[''] before:h-4 before:w-4 before:left-0.5 before:bottom-0.5 before:bg-white before:rounded-full before:transition-all before:duration-300 peer-checked:bg-primary-600 peer-checked:before:translate-x-5"></span>
+                    </label>
+                    <span class="ml-2 text-sm"><i class="fas fa-moon"></i></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="py-20 bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-900 dark:to-gray-800 dark:text-white">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Frédéric KOLLER</h1>
+                <h2 class="text-2xl md:text-3xl text-gray-600 dark:text-gray-300 mb-6">Développeur Web Full-Stack</h2>
+                <p class="text-lg mb-8">Spécialisé dans les technologies JavaScript modernes avec une forte appétence pour le Front-End.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="btn btn-primary"><i class="fas fa-envelope mr-2"></i>Me contacter</a>
+                    <a href="#experiences" class="btn btn-outline dark:text-white"><i class="fas fa-briefcase mr-2"></i>Voir mon parcours</a>
+                </div>
+                <div class="mt-8 flex space-x-4">
+                    <a href="https://github.com/fredckl" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">
+                        <i class="fab fa-github text-2xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/frederic-koller" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                    </a>
+                    <a href="https://me.frederickoller.ch" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-primary-600 dark:text-gray-300 dark:hover:text-primary-400 transition-colors">
+                        <i class="fas fa-globe text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center" data-aos="fade-left">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-full flex items-center justify-center overflow-hidden">
+                        <img src="https://via.placeholder.com/400x400.png?text=FK" alt="Frédéric KOLLER" class="w-60 h-60 md:w-76 md:h-76 rounded-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-white dark:bg-gray-800 px-4 py-2 rounded-lg shadow-lg">
+                        <p class="font-mono text-sm">📍 Yverdon-les-Bains, Suisse</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil Section -->
+    <section id="profil" class="section bg-white dark:bg-gray-900 dark:text-white">
+        <div class="container">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">🧭 Profil</h2>
+            <div class="max-w-3xl mx-auto" data-aos="fade-up" data-aos-delay="200">
+                <div class="card dark:bg-gray-800">
+                    <p class="text-lg leading-relaxed">
+                        Développeur web Full-Stack avec plus de 10 ans d'expérience, j'interviens dans la conception, le développement et la gestion d'applications web complexes. Curieux, rigoureux et doté d'un excellent relationnel, j'anime actuellement une équipe de développeurs en méthode agile. Mon expertise se concentre sur les technologies JavaScript modernes, avec une forte appétence pour le Front-End.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expériences Section -->
+    <section id="experiences" class="section bg-gray-50 dark:bg-gray-800 dark:text-white">
+        <div class="container">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">💼 Expériences professionnelles</h2>
+            
+            <div class="space-y-10">
+                <!-- Expérience 1 -->
+                <div class="card dark:bg-gray-700" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row md:items-start">
+                        <div class="md:w-1/4 mb-4 md:mb-0">
+                            <span class="text-sm text-gray-500 dark:text-gray-300">Avr. 2023 – Oct. 2021</span>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-xl font-bold mb-2">Développeur Full-Stack</h3>
+                            <p class="text-primary-600 dark:text-primary-400 font-medium mb-4">Bvlgari (Neuchâtel)</p>
+                            <ul class="list-disc list-inside space-y-2 mb-4">
+                                <li>Développement d'applications internes pour plusieurs Business Units</li>
+                                <li>Participation aux phases de conception, développement et déploiement</li>
+                                <li>Création de librairies réutilisables, documentation et formation utilisateurs</li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-badge">VueJS</span>
+                                <span class="skill-badge">NodeJS</span>
+                                <span class="skill-badge">TypeScript</span>
+                                <span class="skill-badge">Laravel</span>
+                                <span class="skill-badge">SQL Server</span>
+                                <span class="skill-badge">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Expérience 2 -->
+                <div class="card dark:bg-gray-700" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex flex-col md:flex-row md:items-start">
+                        <div class="md:w-1/4 mb-4 md:mb-0">
+                            <span class="text-sm text-gray-500 dark:text-gray-300">Oct. 2021 – Fév. 2023</span>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-xl font-bold mb-2">Responsable de pôle</h3>
+                            <p class="text-primary-600 dark:text-primary-400 font-medium mb-4">F.ASS.T (Angoulême)</p>
+                            <ul class="list-disc list-inside space-y-2 mb-4">
+                                <li>Encadrement d'une équipe de 10 collaborateurs</li>
+                                <li>Animation de cérémonies Scrum (daily, sprint review, etc.)</li>
+                                <li>Contribution aux développements Full-Stack</li>
+                                <li>Mise en place de bonnes pratiques DevOps</li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-badge">ReactJS</span>
+                                <span class="skill-badge">NodeJS</span>
+                                <span class="skill-badge">TypeScript</span>
+                                <span class="skill-badge">GraphQL</span>
+                                <span class="skill-badge">MongoDB</span>
+                                <span class="skill-badge">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Expérience 3 -->
+                <div class="card dark:bg-gray-700" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex flex-col md:flex-row md:items-start">
+                        <div class="md:w-1/4 mb-4 md:mb-0">
+                            <span class="text-sm text-gray-500 dark:text-gray-300">Mar. 2021 – Oct. 2021</span>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-xl font-bold mb-2">Développeur Full-Stack</h3>
+                            <p class="text-primary-600 dark:text-primary-400 font-medium mb-4">F.ASS.T</p>
+                            <ul class="list-disc list-inside space-y-2 mb-4">
+                                <li>Création de parcours d'aide à la vente</li>
+                                <li>Développement Front/Back, microservices, déploiements en environnement prod</li>
+                            </ul>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-badge">ReactJS</span>
+                                <span class="skill-badge">NodeJS</span>
+                                <span class="skill-badge">TypeScript</span>
+                                <span class="skill-badge">GraphQL</span>
+                                <span class="skill-badge">Docker</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bouton "Voir plus" -->
+                <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                    <button id="show-more-exp" class="btn btn-outline dark:text-white">
+                        <i class="fas fa-plus-circle mr-2"></i>Voir plus d'expériences
+                    </button>
+                </div>
+                
+                <!-- Expériences supplémentaires (cachées par défaut) -->
+                <div id="more-experiences" class="hidden space-y-10">
+                    <!-- Expérience 4 -->
+                    <div class="card dark:bg-gray-700" data-aos="fade-up">
+                        <div class="flex flex-col md:flex-row md:items-start">
+                            <div class="md:w-1/4 mb-4 md:mb-0">
+                                <span class="text-sm text-gray-500 dark:text-gray-300">Jan. 2018 – Fév. 2020</span>
+                            </div>
+                            <div class="md:w-3/4">
+                                <h3 class="text-xl font-bold mb-2">Développeur Web Indépendant</h3>
+                                <ul class="list-disc list-inside space-y-2 mb-4">
+                                    <li>Accompagnement à la transformation digitale de clients</li>
+                                    <li>Réalisation de sites web, e-commerce, et applications mobiles</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="skill-badge">WordPress</span>
+                                    <span class="skill-badge">React Native</span>
+                                    <span class="skill-badge">PHP</span>
+                                    <span class="skill-badge">MySQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Expérience 5 -->
+                    <div class="card dark:bg-gray-700" data-aos="fade-up">
+                        <div class="flex flex-col md:flex-row md:items-start">
+                            <div class="md:w-1/4 mb-4 md:mb-0">
+                                <span class="text-sm text-gray-500 dark:text-gray-300">Oct. 2014 – Oct. 2017</span>
+                            </div>
+                            <div class="md:w-3/4">
+                                <h3 class="text-xl font-bold mb-2">Développeur Web</h3>
+                                <p class="text-primary-600 dark:text-primary-400 font-medium mb-4">JEV Langues</p>
+                                <ul class="list-disc list-inside space-y-2 mb-4">
+                                    <li>Maintenance et évolution de sites institutionnels</li>
+                                    <li>Formation des utilisateurs et livraison en production</li>
+                                </ul>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="skill-badge">PHP</span>
+                                    <span class="skill-badge">MySQL</span>
+                                    <span class="skill-badge">VueJS</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compétences Section -->
+    <section id="competences" class="section bg-white dark:bg-gray-900 dark:text-white">
+        <div class="container">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">🛠️ Compétences techniques</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Front-End -->
+                <div class="card dark:bg-gray-800" data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-6 text-center">Front-End</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>ReactJS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-primary-600 h-2.5 rounded-full" data-level="90" style="width: 0"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>VueJS</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-primary-600 h-2.5 rounded-full" data-level="85" style="width: 0"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>TailwindCSS</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-primary-600 h-2.5 rounded-full" data-level="95" style="width: 0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Back-End -->
+                <div class="card dark:bg-gray-800" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-6 text-center">Back-End</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>NodeJS</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-secondary-600 h-2.5 rounded-full" data-level="85" style="width: 0"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>PHP</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-secondary-600 h-2.5 rounded-full" data-level="80" style="width: 0"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Laravel</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-secondary-600 h-2.5 rounded-full" data-level="75" style="width: 0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Base de données -->
+                <div class="card dark:bg-gray-800" data-aos="fade-up" data-aos-delay="200">
+                    <h3 class="text-xl font-bold mb-6 text-center">Base de données</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>MongoDB</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-primary-600 h-2.5 rounded-full" data-level="80" style="width: 0"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>MySQL</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-primary-600 h-2.5 rounded-full" data-level="85" style="width: 0"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>SQL Server</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-primary-600 h-2.5 rounded-full" data-level="75" style="width: 0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- DevOps / Outils -->
+                <div class="card dark:bg-gray-800" data-aos="fade-up" data-aos-delay="300">
+                    <h3 class="text-xl font-bold mb-6 text-center">DevOps / Outils</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Docker</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-secondary-600 h-2.5 rounded-full" data-level="85" style="width: 0"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Git</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-secondary-600 h-2.5 rounded-full" data-level="90" style="width: 0"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Webpack</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
+                                <div class="skill-bar bg-secondary-600 h-2.5 rounded-full" data-level="80" style="width: 0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Soft Skills -->
+            <div class="mt-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-8 text-center">🧑‍💻 Soft skills</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full text-center">
+                        <span>Sens du travail en équipe</span>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full text-center">
+                        <span>Organisation & autonomie</span>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full text-center">
+                        <span>Curiosité technique</span>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full text-center">
+                        <span>Esprit d'analyse</span>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full text-center">
+                        <span>Capacité d'adaptation</span>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full text-center">
+                        <span>Pédagogie & transmission de savoir</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Langues -->
+            <div class="mt-16" data-aos="fade-up">
+                <h3 class="text-2xl font-bold mb-8 text-center">🌐 Langues</h3>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <div class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full text-center">
+                        <span>Français – Langue maternelle</span>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full text-center">
+                        <span>Anglais – Technique</span>
+                    </div>
+                    <div class="bg-gray-100 dark:bg-gray-800 px-6 py-3 rounded-full text-center">
+                        <span>Allemand – Scolaire</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formations Section -->
+    <section id="formations" class="section bg-gray-50 dark:bg-gray-800 dark:text-white">
+        <div class="container">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">🎓 Formations</h2>
+            
+            <div class="max-w-3xl mx-auto space-y-8">
+                <!-- Formation 1 -->
+                <div class="card dark:bg-gray-700" data-aos="fade-up">
+                    <div class="flex flex-col md:flex-row md:items-start">
+                        <div class="md:w-1/4 mb-4 md:mb-0">
+                            <span class="text-sm text-gray-500 dark:text-gray-300">2013 – 2014</span>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-xl font-bold mb-2">Formation Développeur Logiciel</h3>
+                            <p class="text-primary-600 dark:text-primary-400 font-medium mb-2">CIFOP Angoulême</p>
+                            <p>Titre professionnel (équivalent BTS)</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formation 2 -->
+                <div class="card dark:bg-gray-700" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex flex-col md:flex-row md:items-start">
+                        <div class="md:w-1/4 mb-4 md:mb-0">
+                            <span class="text-sm text-gray-500 dark:text-gray-300">1995 – 1999</span>
+                        </div>
+                        <div class="md:w-3/4">
+                            <h3 class="text-xl font-bold mb-2">CFC Installateur Électricien</h3>
+                            <p class="text-primary-600 dark:text-primary-400 font-medium mb-2">Grandson</p>
+                            <p>Apprentissage chez Gilbert Lassueur</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Centres d'intérêt Section -->
+    <section class="section bg-white dark:bg-gray-900 dark:text-white">
+        <div class="container">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">🎯 Centres d'intérêt</h2>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6 text-center" data-aos="fade-up" data-aos-delay="100">
+                <div class="card dark:bg-gray-800 flex flex-col items-center justify-center p-6 hover:scale-105 transition-transform">
+                    <i class="fas fa-hiking text-4xl mb-4 text-primary-600 dark:text-primary-400"></i>
+                    <span>Randonnée</span>
+                </div>
+                <div class="card dark:bg-gray-800 flex flex-col items-center justify-center p-6 hover:scale-105 transition-transform">
+                    <i class="fas fa-camera text-4xl mb-4 text-primary-600 dark:text-primary-400"></i>
+                    <span>Photographie</span>
+                </div>
+                <div class="card dark:bg-gray-800 flex flex-col items-center justify-center p-6 hover:scale-105 transition-transform">
+                    <i class="fas fa-film text-4xl mb-4 text-primary-600 dark:text-primary-400"></i>
+                    <span>Cinéma</span>
+                </div>
+                <div class="card dark:bg-gray-800 flex flex-col items-center justify-center p-6 hover:scale-105 transition-transform">
+                    <i class="fas fa-bicycle text-4xl mb-4 text-primary-600 dark:text-primary-400"></i>
+                    <span>Vélo</span>
+                </div>
+                <div class="card dark:bg-gray-800 flex flex-col items-center justify-center p-6 hover:scale-105 transition-transform">
+                    <i class="fas fa-book text-4xl mb-4 text-primary-600 dark:text-primary-400"></i>
+                    <span>Lecture</span>
+                </div>
+                <div class="card dark:bg-gray-800 flex flex-col items-center justify-center p-6 hover:scale-105 transition-transform">
+                    <i class="fas fa-laptop-code text-4xl mb-4 text-primary-600 dark:text-primary-400"></i>
+                    <span>Projets perso</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-gradient-to-br from-primary-50 to-secondary-50 dark:from-gray-900 dark:to-gray-800 dark:text-white">
+        <div class="container">
+            <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">📬 Me contacter</h2>
+            
+            <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card dark:bg-gray-800" data-aos="fade-up">
+                    <h3 class="text-xl font-bold mb-6">Informations de contact</h3>
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <i class="fas fa-envelope text-xl text-primary-600 dark:text-primary-400 w-8"></i>
+                            <a href="mailto:koller.f@gmail.com" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">koller.f@gmail.com</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-phone text-xl text-primary-600 dark:text-primary-400 w-8"></i>
+                            <a href="tel:+41774702775" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">+41 77 470 27 75</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-map-marker-alt text-xl text-primary-600 dark:text-primary-400 w-8"></i>
+                            <span>Yverdon-les-Bains, Suisse</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-linkedin text-xl text-primary-600 dark:text-primary-400 w-8"></i>
+                            <a href="https://www.linkedin.com/in/frederic-koller" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">linkedin.com/in/frederic-koller</a>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fab fa-github text-xl text-primary-600 dark:text-primary-400 w-8"></i>
+                            <a href="https://github.com/fredckl" target="_blank" rel="noopener noreferrer" class="hover:text-primary-600 dark:hover:text-primary-400 transition-colors">github.com/fredckl</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card dark:bg-gray-800" data-aos="fade-up" data-aos-delay="100">
+                    <h3 class="text-xl font-bold mb-6">Envoyez-moi un message</h3>
+                    <form id="contact-form" class="space-y-4">
+                        <div>
+                            <label for="name" class="block mb-2 text-sm font-medium">Nom</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block mb-2 text-sm font-medium">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block mb-2 text-sm font-medium">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:text-white" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">Envoyer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p>&copy; 2025 Frédéric KOLLER. Tous droits réservés.</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://github.com/fredckl" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/frederic-koller" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://me.frederickoller.ch" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white transition-colors">
+                        <i class="fas fa-globe text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script pour le bouton "Voir plus" -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const showMoreBtn = document.getElementById('show-more-exp');
+            const moreExperiences = document.getElementById('more-experiences');
+            
+            if (showMoreBtn && moreExperiences) {
+                showMoreBtn.addEventListener('click', () => {
+                    moreExperiences.classList.toggle('hidden');
+                    showMoreBtn.innerHTML = moreExperiences.classList.contains('hidden') 
+                        ? '<i class="fas fa-plus-circle mr-2"></i>Voir plus d\'expériences'
+                        : '<i class="fas fa-minus-circle mr-2"></i>Voir moins d\'expériences';
+                });
+            }
+            
+            // Formulaire de contact
+            const contactForm = document.getElementById('contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert('Merci pour votre message ! Cette fonctionnalité est en cours de développement.');
+                    contactForm.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
