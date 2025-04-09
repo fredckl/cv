@@ -218,6 +218,74 @@
         .easter-egg-notification.show {
             opacity: 1;
         }
+
+        /* Modal pour le jeu Snake */
+        .snake-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .snake-modal.show {
+            display: flex;
+        }
+
+        .snake-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background-color: #111;
+            border: 5px solid #444;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .snake-game {
+            width: 100%;
+            height: 100%;
+        }
+
+        .snake-modal h2 {
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .snake-score {
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .snake-controls {
+            font-family: 'VT323', monospace;
+            color: #fff;
+            margin-top: 15px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        .snake-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-family: 'Press Start 2P', cursive;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -500,13 +568,13 @@
     </section>
 
     <!-- Compétences Section -->
-    <section id="competences" class="section bg-white dark:bg-gray-800 dark:text-white">
+    <section id="competences" class="section bg-white dark:bg-custom-dark dark:text-white">
         <div class="container">
             <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">🛠️ Compétences techniques</h2>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <!-- Front-End -->
-                <div class="card dark:bg-gray-700" data-aos="fade-up">
+                <div class="card dark:bg-custom-dark" data-aos="fade-up">
                     <h3 class="text-xl font-bold mb-6 text-center">Front-End</h3>
                     <div class="space-y-4">
                         <div>
@@ -540,7 +608,7 @@
                 </div>
 
                 <!-- Back-End -->
-                <div class="card dark:bg-gray-700" data-aos="fade-up" data-aos-delay="100">
+                <div class="card dark:bg-custom-dark" data-aos="fade-up" data-aos-delay="100">
                     <h3 class="text-xl font-bold mb-6 text-center">Back-End</h3>
                     <div class="space-y-4">
                         <div>
@@ -574,7 +642,7 @@
                 </div>
 
                 <!-- Base de données -->
-                <div class="card dark:bg-gray-700" data-aos="fade-up" data-aos-delay="200">
+                <div class="card dark:bg-custom-dark" data-aos="fade-up" data-aos-delay="200">
                     <h3 class="text-xl font-bold mb-6 text-center">Base de données</h3>
                     <div class="space-y-4">
                         <div>
@@ -608,7 +676,7 @@
                 </div>
 
                 <!-- DevOps / Outils -->
-                <div class="card dark:bg-gray-700" data-aos="fade-up" data-aos-delay="300">
+                <div class="card dark:bg-custom-dark" data-aos="fade-up" data-aos-delay="300">
                     <h3 class="text-xl font-bold mb-6 text-center">DevOps / Outils</h3>
                     <div class="space-y-4">
                         <div>
@@ -686,13 +754,13 @@
     </section>
 
     <!-- Formations Section -->
-    <section id="formations" class="section bg-gray-50 dark:bg-gray-800 dark:text-white">
+    <section id="formations" class="section bg-gray-50 dark:bg-custom-dark dark:text-white">
         <div class="container">
             <h2 class="text-3xl font-bold mb-12 text-center" data-aos="fade-up">🎓 Formations</h2>
 
             <div class="max-w-3xl mx-auto space-y-8">
                 <!-- Formation 1 -->
-                <div class="card dark:bg-gray-700" data-aos="fade-up">
+                <div class="card dark:bg-custom-dark" data-aos="fade-up">
                     <div class="flex flex-col md:flex-row md:items-start">
                         <div class="md:w-1/4 mb-4 md:mb-0">
                             <span class="text-sm text-gray-500 dark:text-gray-300">2013 – 2014</span>
@@ -706,7 +774,7 @@
                 </div>
 
                 <!-- Formation 2 -->
-                <div class="card dark:bg-gray-700" data-aos="fade-up" data-aos-delay="100">
+                <div class="card dark:bg-custom-dark" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex flex-col md:flex-row md:items-start">
                         <div class="md:w-1/4 mb-4 md:mb-0">
                             <span class="text-sm text-gray-500 dark:text-gray-300">1995 – 1999</span>
@@ -844,6 +912,17 @@
         </div>
     </footer>
 
+    <!-- Modal pour le jeu Snake -->
+    <div id="snake-modal" class="snake-modal">
+        <button id="snake-close" class="snake-close">X</button>
+        <h2>SNAKE GAME</h2>
+        <div class="snake-container">
+            <canvas id="snake-game" class="snake-game"></canvas>
+        </div>
+        <div id="snake-score" class="snake-score">Score: 0</div>
+        <div class="snake-controls">Utilisez les flèches pour diriger le serpent</div>
+    </div>
+
     <!-- Script pour le bouton "Voir plus" -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -930,6 +1009,9 @@
             let isPixelModeActive = false;
             let wasPixelModeActive = false;
             let mKeyLongPressTimer = null;
+            let jKeyLongPressTimer = null;
+            const snakeModal = document.getElementById('snake-modal');
+            const snakeCloseButton = document.getElementById('snake-close');
 
             // Fonction pour activer le mode pixel
             function activatePixelMode() {
@@ -968,13 +1050,28 @@
                         mKeyLongPressTimer = null;
                     }, 800); // 800ms pour un appui long
                 }
+
+                // Easter egg Snake avec appui long sur la touche 'j'
+                if ((e.key === 'j' || e.key === 'J') && !jKeyLongPressTimer && !snakeModal.classList.contains('show')) {
+                    // Démarrer le timer pour l'appui long
+                    jKeyLongPressTimer = setTimeout(() => {
+                        showNotification('SNAKE GAME ACTIVATED!');
+                        openSnakeGame();
+                        jKeyLongPressTimer = null;
+                    }, 800); // 800ms pour un appui long
+                }
             });
 
-            // Annuler le timer si la touche est relâchée avant la fin de l'appui long
+            // Annuler les timers si les touches sont relâchées avant la fin de l'appui long
             document.addEventListener('keyup', (e) => {
                 if ((e.key === 'm' || e.key === 'M') && mKeyLongPressTimer) {
                     clearTimeout(mKeyLongPressTimer);
                     mKeyLongPressTimer = null;
+                }
+
+                if ((e.key === 'j' || e.key === 'J') && jKeyLongPressTimer) {
+                    clearTimeout(jKeyLongPressTimer);
+                    jKeyLongPressTimer = null;
                 }
             });
 
@@ -996,6 +1093,194 @@
                         wasPixelModeActive = false;
                     }
                 });
+            });
+
+            // Fermer la modal Snake
+            snakeCloseButton.addEventListener('click', () => {
+                closeSnakeGame();
+            });
+
+            // Jeu Snake
+            const canvas = document.getElementById('snake-game');
+            const scoreDisplay = document.getElementById('snake-score');
+            let ctx, snake, food, score, direction, gameLoop;
+
+            function openSnakeGame() {
+                snakeModal.classList.add('show');
+                initSnakeGame();
+                startSnakeGame();
+            }
+
+            function closeSnakeGame() {
+                snakeModal.classList.remove('show');
+                stopSnakeGame();
+            }
+
+            function initSnakeGame() {
+                if (!ctx) {
+                    ctx = canvas.getContext('2d');
+                }
+                
+                // Ajuster la taille du canvas à son conteneur
+                canvas.width = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+                
+                const gridSize = 20;
+                const gridWidth = Math.floor(canvas.width / gridSize);
+                const gridHeight = Math.floor(canvas.height / gridSize);
+                
+                // Initialiser le serpent
+                snake = [
+                    { x: Math.floor(gridWidth / 2), y: Math.floor(gridHeight / 2) }
+                ];
+                
+                // Générer la nourriture
+                food = generateFood(gridWidth, gridHeight);
+                
+                // Initialiser le score et la direction
+                score = 0;
+                direction = 'right';
+                
+                // Mettre à jour l'affichage du score
+                scoreDisplay.textContent = `Score: ${score}`;
+            }
+
+            function generateFood(gridWidth, gridHeight) {
+                const x = Math.floor(Math.random() * gridWidth);
+                const y = Math.floor(Math.random() * gridHeight);
+                
+                // Vérifier que la nourriture n'est pas sur le serpent
+                for (let segment of snake) {
+                    if (segment.x === x && segment.y === y) {
+                        return generateFood(gridWidth, gridHeight);
+                    }
+                }
+                
+                return { x, y };
+            }
+
+            function startSnakeGame() {
+                if (gameLoop) {
+                    clearInterval(gameLoop);
+                }
+                
+                gameLoop = setInterval(() => {
+                    updateSnakeGame();
+                    drawSnakeGame();
+                }, 100); // Vitesse du jeu
+            }
+
+            function stopSnakeGame() {
+                if (gameLoop) {
+                    clearInterval(gameLoop);
+                    gameLoop = null;
+                }
+            }
+
+            function updateSnakeGame() {
+                const gridSize = 20;
+                const gridWidth = Math.floor(canvas.width / gridSize);
+                const gridHeight = Math.floor(canvas.height / gridSize);
+                
+                // Créer une nouvelle tête en fonction de la direction
+                const head = { ...snake[0] };
+                
+                switch (direction) {
+                    case 'up':
+                        head.y -= 1;
+                        break;
+                    case 'down':
+                        head.y += 1;
+                        break;
+                    case 'left':
+                        head.x -= 1;
+                        break;
+                    case 'right':
+                        head.x += 1;
+                        break;
+                }
+                
+                // Vérifier les collisions avec les bords
+                if (head.x < 0) head.x = gridWidth - 1;
+                if (head.x >= gridWidth) head.x = 0;
+                if (head.y < 0) head.y = gridHeight - 1;
+                if (head.y >= gridHeight) head.y = 0;
+                
+                // Vérifier les collisions avec le serpent lui-même
+                for (let i = 0; i < snake.length; i++) {
+                    if (snake[i].x === head.x && snake[i].y === head.y) {
+                        // Game over
+                        showNotification(`GAME OVER! Score: ${score}`);
+                        initSnakeGame();
+                        return;
+                    }
+                }
+                
+                // Ajouter la nouvelle tête
+                snake.unshift(head);
+                
+                // Vérifier si le serpent a mangé la nourriture
+                if (head.x === food.x && head.y === food.y) {
+                    // Augmenter le score
+                    score += 10;
+                    scoreDisplay.textContent = `Score: ${score}`;
+                    
+                    // Générer une nouvelle nourriture
+                    food = generateFood(gridWidth, gridHeight);
+                } else {
+                    // Supprimer la queue si le serpent n'a pas mangé
+                    snake.pop();
+                }
+            }
+
+            function drawSnakeGame() {
+                const gridSize = 20;
+                
+                // Effacer le canvas
+                ctx.fillStyle = '#111';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Dessiner le serpent
+                ctx.fillStyle = '#4CAF50';
+                for (let segment of snake) {
+                    ctx.fillRect(segment.x * gridSize, segment.y * gridSize, gridSize - 1, gridSize - 1);
+                }
+                
+                // Dessiner la tête du serpent dans une couleur différente
+                ctx.fillStyle = '#8BC34A';
+                ctx.fillRect(snake[0].x * gridSize, snake[0].y * gridSize, gridSize - 1, gridSize - 1);
+                
+                // Dessiner la nourriture
+                ctx.fillStyle = '#FF5722';
+                ctx.fillRect(food.x * gridSize, food.y * gridSize, gridSize - 1, gridSize - 1);
+            }
+
+            // Contrôles du jeu Snake
+            document.addEventListener('keydown', (e) => {
+                if (!snakeModal.classList.contains('show')) return;
+                
+                switch (e.key) {
+                    case 'ArrowUp':
+                        if (direction !== 'down') direction = 'up';
+                        e.preventDefault();
+                        break;
+                    case 'ArrowDown':
+                        if (direction !== 'up') direction = 'down';
+                        e.preventDefault();
+                        break;
+                    case 'ArrowLeft':
+                        if (direction !== 'right') direction = 'left';
+                        e.preventDefault();
+                        break;
+                    case 'ArrowRight':
+                        if (direction !== 'left') direction = 'right';
+                        e.preventDefault();
+                        break;
+                    case 'Escape':
+                        closeSnakeGame();
+                        e.preventDefault();
+                        break;
+                }
             });
         });
     </script>
