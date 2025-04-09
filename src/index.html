@@ -157,6 +157,16 @@
             font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands' !important;
         }
 
+        /* Exclure les champs de formulaire du changement de police */
+        body.pixel-mode input,
+        body.pixel-mode textarea,
+        body.pixel-mode select,
+        body.pixel-mode option,
+        body.pixel-mode button[type="submit"] {
+            font-family: 'Inter', sans-serif !important;
+            font-size: 16px !important;
+        }
+
         body.pixel-mode h1 {
             font-size: 2rem;
             line-height: 1.6;
@@ -190,8 +200,8 @@
         /* Notification d'easter egg */
         .easter-egg-notification {
             position: fixed;
-            top: 20px;
-            left: 50%;
+            top: 70px;
+            right: 10px;
             transform: translateX(-50%);
             background-color: rgba(0, 0, 0, 0.8);
             color: #fff;
@@ -918,6 +928,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             const easterEggNotification = document.getElementById('easter-egg-notification');
             let isPixelModeActive = false;
+            let wasPixelModeActive = false;
+            let mKeyLongPressTimer = null;
 
             // Fonction pour activer le mode pixel
             function activatePixelMode() {
@@ -942,16 +954,48 @@
                 }, 2000);
             }
 
-            // Basculer le mode pixel avec la touche 'm'
+            // Basculer le mode pixel avec un appui long sur la touche 'm'
             document.addEventListener('keydown', (e) => {
-                if (e.key === 'm' || e.key === 'M') {
-                    // Basculer entre les modes
-                    if (isPixelModeActive) {
-                        deactivatePixelMode();
-                    } else {
-                        activatePixelMode();
-                    }
+                if ((e.key === 'm' || e.key === 'M') && !mKeyLongPressTimer) {
+                    // Démarrer le timer pour l'appui long
+                    mKeyLongPressTimer = setTimeout(() => {
+                        // Basculer entre les modes
+                        if (isPixelModeActive) {
+                            deactivatePixelMode();
+                        } else {
+                            activatePixelMode();
+                        }
+                        mKeyLongPressTimer = null;
+                    }, 800); // 800ms pour un appui long
                 }
+            });
+
+            // Annuler le timer si la touche est relâchée avant la fin de l'appui long
+            document.addEventListener('keyup', (e) => {
+                if ((e.key === 'm' || e.key === 'M') && mKeyLongPressTimer) {
+                    clearTimeout(mKeyLongPressTimer);
+                    mKeyLongPressTimer = null;
+                }
+            });
+
+            // Gérer le formulaire de contact
+            const formInputs = document.querySelectorAll('#contact-form input, #contact-form textarea');
+
+            // Désactiver temporairement le mode pixel lors de la saisie dans le formulaire
+            formInputs.forEach(input => {
+                input.addEventListener('focus', () => {
+                    if (isPixelModeActive) {
+                        wasPixelModeActive = true;
+                        document.body.classList.remove('pixel-mode');
+                    }
+                });
+
+                input.addEventListener('blur', () => {
+                    if (wasPixelModeActive) {
+                        document.body.classList.add('pixel-mode');
+                        wasPixelModeActive = false;
+                    }
+                });
             });
         });
     </script>
