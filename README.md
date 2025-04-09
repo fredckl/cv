@@ -13,6 +13,8 @@ Ce projet est un site web moderne et interactif présentant le CV et portfolio d
 
 - Node.js (v14.0.0 ou plus récent)
 - npm ou yarn
+- Docker
+- Docker Compose
 
 ## Installation
 
@@ -39,6 +41,16 @@ yarn dev
 
 Le site sera accessible à l'adresse [http://localhost:3000](http://localhost:3000).
 
+### Développement avec Docker
+
+Pour lancer l'environnement de développement avec hot-reload :
+
+```bash
+docker-compose up dev
+```
+
+L'application sera disponible à l'adresse http://localhost:3000
+
 ## Construction pour la production
 
 Pour construire le site pour la production :
@@ -50,6 +62,25 @@ yarn build
 ```
 
 Les fichiers générés seront disponibles dans le répertoire `dist`.
+
+### Production avec Docker
+
+Pour construire et exécuter l'application en mode production :
+
+```bash
+docker-compose up prod
+```
+
+L'application sera disponible à l'adresse http://localhost:80
+
+#### Construction manuelle de l'image Docker
+
+Vous pouvez également construire l'image Docker manuellement :
+
+```bash
+docker build -t frederic-portfolio .
+docker run -p 80:80 frederic-portfolio
+```
 
 ## Prévisualisation de la production
 
