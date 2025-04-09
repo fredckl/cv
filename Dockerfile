@@ -25,8 +25,8 @@ COPY --from=build /app/nginx.conf /etc/nginx/conf.d/default.conf
 # Copier les fichiers de build depuis l'étape précédente
 COPY --from=build /app/src/dist /usr/share/nginx/html
 
-COPY robots.txt /usr/share/nginx/html/robots.txt
-COPY sitemap.xml /usr/share/nginx/html/sitemap.xml
+COPY src/robots.txt /usr/share/nginx/html/robots.txt
+COPY src/sitemap.xml /usr/share/nginx/html/sitemap.xml
 
 # Exposer le port 80
 EXPOSE 80
