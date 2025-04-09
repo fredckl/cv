@@ -1,5 +1,5 @@
 # Étape de build
-FROM node:18-alpine as build
+FROM node:18-alpine AS build
 
 # Définir le répertoire de travail
 WORKDIR /app
@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Étape de production avec Nginx
-FROM nginx:stable-alpine as production
+FROM nginx:stable-alpine AS production
 
 # Copier la configuration Nginx personnalisée
 COPY --from=build /app/nginx.conf /etc/nginx/conf.d/default.conf
