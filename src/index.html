@@ -286,6 +286,35 @@
             border: none;
             font-family: 'Press Start 2P', cursive;
         }
+
+        /* Effet de flip de l'écran */
+        .flip-screen {
+            animation: flip-animation 0.5s ease-in-out;
+            transform: rotate(180deg);
+        }
+
+        @keyframes flip-animation {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(180deg);
+            }
+        }
+
+        .flip-screen-back {
+            animation: flip-back-animation 0.5s ease-in-out;
+            transform: rotate(0deg);
+        }
+
+        @keyframes flip-back-animation {
+            0% {
+                transform: rotate(180deg);
+            }
+            100% {
+                transform: rotate(0deg);
+            }
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -1010,6 +1039,8 @@
             let wasPixelModeActive = false;
             let mKeyLongPressTimer = null;
             let jKeyLongPressTimer = null;
+            let fKeyLongPressTimer = null;
+            let isScreenFlipped = false;
             const snakeModal = document.getElementById('snake-modal');
             const snakeCloseButton = document.getElementById('snake-close');
 
@@ -1060,6 +1091,15 @@
                         jKeyLongPressTimer = null;
                     }, 800); // 800ms pour un appui long
                 }
+
+                // Easter egg Flip Screen avec appui long sur la touche 'f'
+                if ((e.key === 'f' || e.key === 'F') && !fKeyLongPressTimer) {
+                    // Démarrer le timer pour l'appui long
+                    fKeyLongPressTimer = setTimeout(() => {
+                        toggleScreenFlip();
+                        fKeyLongPressTimer = null;
+                    }, 800); // 800ms pour un appui long
+                }
             });
 
             // Annuler les timers si les touches sont relâchées avant la fin de l'appui long
@@ -1073,7 +1113,31 @@
                     clearTimeout(jKeyLongPressTimer);
                     jKeyLongPressTimer = null;
                 }
+
+                if ((e.key === 'f' || e.key === 'F') && fKeyLongPressTimer) {
+                    clearTimeout(fKeyLongPressTimer);
+                    fKeyLongPressTimer = null;
+                }
             });
+
+            // Fonction pour basculer le flip de l'écran
+            function toggleScreenFlip() {
+                if (isScreenFlipped) {
+                    // Retourner l'écran à la normale
+                    document.body.classList.remove('flip-screen');
+                    document.body.classList.add('flip-screen-back');
+                    setTimeout(() => {
+                        document.body.classList.remove('flip-screen-back');
+                    }, 500);
+                    isScreenFlipped = false;
+                    showNotification('ÉCRAN NORMAL');
+                } else {
+                    // Faire un flip de l'écran
+                    document.body.classList.add('flip-screen');
+                    isScreenFlipped = true;
+                    showNotification('ÉCRAN INVERSÉ !');
+                }
+            }
 
             // Gérer le formulaire de contact
             const formInputs = document.querySelectorAll('#contact-form input, #contact-form textarea');
