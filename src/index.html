@@ -315,6 +315,35 @@
                 transform: rotate(0deg);
             }
         }
+
+        /* Styles pour la modale de jeux */
+        #games-modal {
+            font-family: 'Press Start 2P', cursive;
+            transition: all 0.3s ease;
+        }
+        
+        #games-modal h2 {
+            color: #fff;
+            text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+        }
+        
+        #games-list .bg-gray-800:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        #game-canvas {
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        #back-to-games {
+            transition: all 0.2s ease;
+            text-shadow: 0 0 5px rgba(0, 255, 255, 0.5);
+        }
+        
+        #back-to-games:hover {
+            transform: translateY(-2px);
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -1038,7 +1067,6 @@
             let isPixelModeActive = false;
             let wasPixelModeActive = false;
             let mKeyLongPressTimer = null;
-            let jKeyLongPressTimer = null;
             let fKeyLongPressTimer = null;
             let isScreenFlipped = false;
             const snakeModal = document.getElementById('snake-modal');
@@ -1082,16 +1110,6 @@
                     }, 800); // 800ms pour un appui long
                 }
 
-                // Easter egg Snake avec appui long sur la touche 'j'
-                if ((e.key === 'j' || e.key === 'J') && !jKeyLongPressTimer && !snakeModal.classList.contains('show')) {
-                    // Démarrer le timer pour l'appui long
-                    jKeyLongPressTimer = setTimeout(() => {
-                        showNotification('SNAKE GAME ACTIVATED!');
-                        openSnakeGame();
-                        jKeyLongPressTimer = null;
-                    }, 800); // 800ms pour un appui long
-                }
-
                 // Easter egg Flip Screen avec appui long sur la touche 'f'
                 if ((e.key === 'f' || e.key === 'F') && !fKeyLongPressTimer) {
                     // Démarrer le timer pour l'appui long
@@ -1107,11 +1125,6 @@
                 if ((e.key === 'm' || e.key === 'M') && mKeyLongPressTimer) {
                     clearTimeout(mKeyLongPressTimer);
                     mKeyLongPressTimer = null;
-                }
-
-                if ((e.key === 'j' || e.key === 'J') && jKeyLongPressTimer) {
-                    clearTimeout(jKeyLongPressTimer);
-                    jKeyLongPressTimer = null;
                 }
 
                 if ((e.key === 'f' || e.key === 'F') && fKeyLongPressTimer) {
