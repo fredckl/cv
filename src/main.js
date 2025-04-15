@@ -2,6 +2,7 @@ import Alpine from 'alpinejs';
 import AOS from 'aos';
 import emailjs from 'emailjs-com';
 import { EMAILJS_CONFIG } from './emailjs-config';
+import { GamesModal } from './games/games-modal.js';
 import 'aos/dist/aos.css';
 import './style.css';
 
@@ -154,4 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+  
+  // Initialiser la modale de jeux
+  new GamesModal();
 });
