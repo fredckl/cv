@@ -1,74 +1,77 @@
 ## Frédéric KOLLER
-**Développeur Web Full-Stack (orientation Front-End)**
-📍 Yverdon-les-Bains, Suisse
-📧 koller.f@gmail.com | 📞 +41 77 470 27 75
+**Développeur Web Full-Stack – Spécialisation Front-End**
+
+📍 Yverdon-les-Bains, Suisse  
+📧 koller.f@gmail.com | 📞 +41 77 470 27 75  
 🔗 [GitHub](https://github.com/fredckl) | [LinkedIn](https://www.linkedin.com/in/frederic-koller) | [Portfolio](https://me.frederickoller.ch)
 
 ---
 
-### 🧭 **Profil**
-Développeur web Full-Stack avec plus de 10 ans d'expérience, j'interviens dans la conception, le développement et la gestion d'applications web complexes. Curieux, rigoureux et doté d’un excellent relationnel, j’anime actuellement une équipe de développeurs en méthode agile. Mon expertise se concentre sur les technologies JavaScript modernes, avec une forte appétence pour le Front-End.
+### 🚀 **Résumé professionnel**
+Développeur web Full-Stack passionné, doté de plus de 10 ans d'expérience dans la conception, le développement et la gestion d'applications web complexes. Leader d'équipe agile, reconnu pour sa capacité à fédérer, transmettre et garantir la qualité technique des livrables. Expertise avancée en JavaScript moderne (React, Vue), avec une forte sensibilité UX/UI et une culture DevOps.
 
 ---
 
 ### 💼 **Expériences professionnelles**
 
-**Développeur Full-Stack – Bvlgari (Neuchâtel)**
-*Avr. 2023 – Oct. 2021*
-- Développement d’applications internes pour plusieurs Business Units
-- Participation aux phases de conception, développement et déploiement
-- Création de librairies réutilisables, documentation et formation utilisateurs
+**Développeur Full-Stack – Bvlgari (Neuchâtel)**  
+*Avr. 2023 – Aujourd'hui*
+- Développement d’applications internes multi-Business Units
+- Participation à toutes les phases projet : conception, développement, déploiement
+- Création de librairies réutilisables, documentation, formation utilisateurs
+- Réduction des temps de livraison grâce à l’automatisation CI/CD
 **Technos :** VueJS, NodeJS, TypeScript, Laravel, SQL Server, Docker
 
-**Responsable de pôle – F.ASS.T (Angoulême)**
+**Responsable de pôle – F.ASS.T (Angoulême)**  
 *Oct. 2021 – Fév. 2023*
-- Encadrement d’une équipe de 10 collaborateurs
-- Animation de cérémonies Scrum (daily, sprint review, etc.)
-- Contribution aux développements Full-Stack
-- Mise en place de bonnes pratiques DevOps
+- Management d’une équipe de 10 développeurs
+- Animation des cérémonies Scrum (daily, sprint, rétrospective)
+- Contribution active aux développements Full-Stack
+- Mise en place de bonnes pratiques DevOps (CI/CD, code review)
 **Technos :** ReactJS, NodeJS, TypeScript, GraphQL, MongoDB, Docker
 
-**Développeur Full-Stack – F.ASS.T**
+**Développeur Full-Stack – F.ASS.T (Angoulême)**  
 *Mar. 2021 – Oct. 2021*
-- Création de parcours d’aide à la vente
-- Développement Front/Back, microservices, déploiements en environnement prod
+- Conception et développement de parcours d’aide à la vente
+- Implémentation de microservices, déploiements en production
 **Technos :** ReactJS, NodeJS, TypeScript, GraphQL, Docker
 
-**Développeur Web Indépendant**
+**Développeur Web Indépendant**  
 *Jan. 2018 – Fév. 2020*
-- Accompagnement à la transformation digitale de clients
-- Réalisation de sites web, e-commerce, et applications mobiles
+- Accompagnement de PME dans leur transformation digitale
+- Réalisation de sites web, e-commerce, applications mobiles
+- Optimisation SEO et performances
 **Technos :** WordPress, React Native, PHP, MySQL
 
-**Développeur Web – JEV Langues**
+**Développeur Web – JEV Langues**  
 *Oct. 2014 – Oct. 2017*
-- Maintenance et évolution de sites institutionnels
-- Formation des utilisateurs et livraison en production
+- Maintenance évolutive de sites institutionnels
+- Formation utilisateurs, gestion des mises en production
 **Technos :** PHP, MySQL, VueJS
 
-**Développeur Web – Suruneligne**
+**Développeur Web – Suruneligne**  
 *Sep. 2014 – Mai 2019*
 - Conception de sites vitrine et e-commerce
-- Support et formation des clients
+- Support technique et formation client
 **Technos :** PHP, WordPress, MySQL, Apache Cordova
 
 ---
 
 ### 🛠️ **Compétences techniques**
 
-| Front-End        | Back-End        | Base de données     | DevOps / Outils        |
-|------------------|------------------|----------------------|------------------------|
-| ReactJS, VueJS   | NodeJS, PHP      | MongoDB, MySQL       | Docker, Portainer, Git |
-| TailwindCSS      | Laravel, Express | SQL Server           | Webpack                |
-| GraphQL, REST    |                  |                      |                        |
+| Front-End          | Back-End         | Base de données     | DevOps / Outils        |
+|--------------------|------------------|---------------------|------------------------|
+| ReactJS, VueJS     | NodeJS, PHP      | MongoDB, MySQL      | Docker, Portainer, Git |
+| TailwindCSS, Sass  | Laravel, Express | SQL Server          | Webpack, CI/CD         |
+| GraphQL, REST      |                  |                     |                        |
 
 ---
 
 ### 🧑‍💻 **Soft skills**
-- Sens du travail en équipe
+- Leadership & esprit d’équipe
 - Organisation & autonomie
 - Curiosité technique
-- Esprit d’analyse
+- Esprit d’analyse et résolution de problèmes
 - Capacité d’adaptation
 - Pédagogie & transmission de savoir
 
@@ -76,19 +79,18 @@ Développeur web Full-Stack avec plus de 10 ans d'expérience, j'interviens dans
 
 ### 🌐 **Langues**
 - Français – Langue maternelle
-- Anglais – Technique
+- Anglais – Technique (écrit/oral)
 - Allemand – Scolaire
 
 ---
 
 ### 🎓 **Formations**
 
-**Formation Développeur Logiciel – CIFOP Angoulême**
-*2013 – 2014*
-Titre professionnel (équivalent BTS)
+**Titre professionnel Développeur Logiciel – CIFOP Angoulême**  
+*2013 – 2014* (équivalent BTS)
 
-**CFC Installateur Électricien – Grandson**
-*1995 – 1999*
+**CFC Installateur Électricien – Grandson**  
+*1995 – 1999*  
 Apprentissage chez Gilbert Lassueur
 
 ---
