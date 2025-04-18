@@ -1,6 +1,7 @@
 // Games Modal Manager
 import { Snake } from './snake.js';
 import { SpaceInvaders } from './space-invaders.js';
+import { Wordle } from './wordle.js';
 
 export class GamesModal {
   constructor() {
@@ -10,7 +11,8 @@ export class GamesModal {
     this.keyPressDelay = 500; // 500ms pour un appui prolongé
     this.games = [
       { id: 'snake', name: 'Snake', class: Snake },
-      { id: 'space-invaders', name: 'Space Invaders', class: SpaceInvaders }
+      { id: 'space-invaders', name: 'Space Invaders', class: SpaceInvaders },
+      { id: 'wordle', name: 'Wordle', class: Wordle }
     ];
     
     this.init();
@@ -32,7 +34,7 @@ export class GamesModal {
     
     // Créer le contenu de la modale
     const modalContent = document.createElement('div');
-    modalContent.className = 'bg-gray-900 border-4 border-gray-700 rounded-lg p-6 w-full max-w-2xl';
+    modalContent.className = 'bg-gray-900 border-4 border-gray-700 rounded-lg p-6 w-full max-w-4xl';
     
     // Créer l'en-tête de la modale
     const modalHeader = document.createElement('div');
@@ -80,8 +82,8 @@ export class GamesModal {
     
     const gameCanvas = document.createElement('canvas');
     gameCanvas.id = 'game-canvas';
-    gameCanvas.width = 600;
-    gameCanvas.height = 400;
+    gameCanvas.width = 800;
+    gameCanvas.height = 600;
     gameCanvas.className = 'bg-black border-2 border-gray-600 rounded-lg mx-auto block';
     
     const backButton = document.createElement('button');
