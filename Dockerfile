@@ -27,6 +27,7 @@ COPY --from=build /app/src/dist /usr/share/nginx/html
 
 COPY src/robots.txt /usr/share/nginx/html/robots.txt
 COPY src/sitemap.xml /usr/share/nginx/html/sitemap.xml
+COPY src/ME.pdf /usr/share/nginx/html/ME.pdf
 
 # Exposer le port 80
 EXPOSE 80
